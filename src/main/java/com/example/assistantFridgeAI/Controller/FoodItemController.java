@@ -8,19 +8,17 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.filter.RequestContextFilter;
 
 import java.util.List;
-import java.util.Optional;
+
 import java.util.UUID;
 
 @RestController
 @RequestMapping("/food")
 public class FoodItemController {
 
-    private final RequestContextFilter requestContextFilter;
     private FoodItemService service;
 
-    public FoodItemController(FoodItemService foodItemService, RequestContextFilter requestContextFilter) {
+    public FoodItemController(FoodItemService foodItemService) {
         this.service = foodItemService;
-        this.requestContextFilter = requestContextFilter;
     }
 
     // POST
