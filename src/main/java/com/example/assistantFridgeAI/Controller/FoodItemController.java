@@ -37,16 +37,29 @@ public class FoodItemController {
     }
 
     //GET BY ID
-
+    @GetMapping("/list/{id}")
+    public ResponseEntity<FoodItem> listById(@PathVariable UUID id){
+        return ResponseEntity.ok(service.ListById(id));
+    }
 
     // PUT
+    @PutMapping("/updateAll/{id}")
+    public ResponseEntity<?> updateWithPut(@PathVariable UUID id, @RequestBody FoodItem food){
+        FoodItem foodItemAtualized = service.updateWithPut(id, food);
+        if(foodItemAtualized != null){
+            return ResponseEntity.ok(foodItemAtualized);
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body("Not found food");
+
+    }
 
 
     //PATCH
     @PatchMapping("/update/{id}")
     public ResponseEntity<?> update(@PathVariable UUID id, @RequestBody FoodItem food){
-        Optional<FoodItem> foodAtualized = service.updateWithPatch(id, food);
-        if (foodAtualized.isPresent()){
+        FoodItem foodAtualized = service.updateWithPatch(id, food);
+        if (foodAtualized != null){
             return ResponseEntity.ok(foodAtualized);
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND)

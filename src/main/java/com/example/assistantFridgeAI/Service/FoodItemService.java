@@ -30,10 +30,21 @@ public class FoodItemService {
         return foodItemOptional.orElse(null);
     }
 
-    public Optional<FoodItem> updateWithPatch(UUID id, FoodItem food){
+    public FoodItem updateWithPut(UUID id, FoodItem food){
+        Optional<FoodItem> foodItemOptional = repository.findById(id);
+
+        if (foodItemOptional.isPresent()){
+            food.setId(id);
+            FoodItem foodItemModel = repository.save(food);
+            return foodItemModel;
+        }
+        return null;
+    }
+
+    public FoodItem updateWithPatch(UUID id, FoodItem food){
         Optional<FoodItem> foodItemOptional = repository.findById(id);
         if(foodItemOptional.isEmpty()){
-            return Optional.empty();
+            return null;
         }
 
         FoodItem foodItemExists = foodItemOptional.get();
@@ -53,7 +64,7 @@ public class FoodItemService {
 
         FoodItem foodItemAtualized = repository.save(foodItemExists);
 
-        return Optional.of(foodItemAtualized);
+        return foodItemAtualized;
     }
 
     public void delete(UUID id){
