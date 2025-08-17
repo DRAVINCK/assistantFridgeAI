@@ -1,11 +1,11 @@
 package com.example.assistantFridgeAI.model;
 
 
+import com.example.assistantFridgeAI.enums.FoodCategory;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+import org.hibernate.annotations.UuidGenerator;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -17,7 +17,8 @@ import java.util.UUID;
 public class FoodItem {
 
     @Id
-    @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
+    @GeneratedValue
+    @UuidGenerator
     private UUID id;
 
     private String name;

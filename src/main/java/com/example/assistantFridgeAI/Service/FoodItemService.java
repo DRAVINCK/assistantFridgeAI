@@ -25,9 +25,8 @@ public class FoodItemService {
         return repository.findAll();
     }
 
-    public FoodItem ListById(UUID Id){
-        Optional<FoodItem> foodItemOptional =repository.findById(Id);
-        return foodItemOptional.orElse(null);
+    public Optional<FoodItem> ListById(UUID Id) {
+        return repository.findById(Id);
     }
 
     public FoodItem updateWithPut(UUID id, FoodItem food){

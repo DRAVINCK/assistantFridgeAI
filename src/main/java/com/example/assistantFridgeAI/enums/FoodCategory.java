@@ -1,4 +1,4 @@
-package com.example.assistantFridgeAI.model;
+package com.example.assistantFridgeAI.enums;
 
 public enum FoodCategory {
     MEAT,
