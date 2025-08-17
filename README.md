@@ -276,8 +276,8 @@ This project is under the MIT license. See the [LICENSE](LICENSE) file for more 
 ## 👨‍💻 Author
 
 **Lucas**
-- GitHub: [@yourusername](https://github.com/DRAVINCK)
-- LinkedIn: [Your Profile](https://www.linkedin.com/in/lucas-teixeira-20a221207/)
+- GitHub: [@Lucas Teixeira](https://github.com/DRAVINCK)
+- LinkedIn: [Lucas Teixeira](https://www.linkedin.com/in/lucas-teixeira-20a221207/)
 
 ---
 
