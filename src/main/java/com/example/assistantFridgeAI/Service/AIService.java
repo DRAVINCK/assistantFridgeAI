@@ -28,7 +28,33 @@ public class AIService {
                 item.getName(),item.getCategory(), item.getQuantity(), item.getExpirationDate()))
             .collect(Collectors.joining("\n"));
 
-    String prompt = "Com base nos seguintes ingredientes, por favor, gere uma receita: " + foods;
+    String prompt = """
+    Atue como um chef de cozinha especializado em receitas com poucos ingredientes.
+    Com base nos itens a seguir, crie uma receita usando apenas os ingredientes fornecidos.
+    
+    Caso tenha itens que possa ser feito outras receitas, pode repetir o processo do formato de saida para cada receita.
+    
+    Caso tenha mais de uma receita, faça um separacao organizada, apresente os nomes e desrições de cada receita por primeiro
+    e depois siga o formato de saida.
+
+    Siga rigorosamente este formato de saída, sem adicionar introduções, notas, conversas ou qualquer outro texto.
+    
+    Formato de saída:
+    ```
+    # Receita
+    ## Nome da Receita
+    [Nome da receita aqui]
+    
+    ## Descrição
+    [Descrição curta da receita aqui]
+
+    ## Ingredientes
+    [Liste os ingredientes e suas quantidades]
+
+    ## Modo de Preparo
+    [Passo a passo da receita em formato de lista]
+    
+    """ + foods;
     Map<String, Object> requestBody = Map.of(
             "contents", List.of(
                     Map.of(
